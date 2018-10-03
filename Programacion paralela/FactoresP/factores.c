@@ -33,13 +33,17 @@ void genPrimoscriba(int tam){
     addNodo(0);     //m[0] = 0;
     addNodo(0);     //m[1] = 0;
     for(i = 2; i <= tam; ++i) 
-        m[i] = 1;
+        addNodo(1);
 
+    Nodo *iter = primer;
     for(i = 2; i*i <= tam; ++i) {
-        if(m[i]) {
-            for(h = 2; i*h <= tam; ++h)
-                m[i*h] = 0;
+        if(iter -> dato) {
+            
+            for(h = 2; i * h <= tam; ++h)
+                
+                (iter + h) -> dato = 0;
         }
+        iter = iter -> sgt;
     }
 }
 
@@ -50,6 +54,11 @@ int main(){
     scanf("%d",&numDescomp);
 
     genPrimoscriba(numDescomp);
+
+    Nodo *inter = primer;
+    while(inter = NULL){
+        printf("%d\n", inter -> dato);
+    }
 
     
     
