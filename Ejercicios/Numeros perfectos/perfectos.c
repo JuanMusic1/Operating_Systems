@@ -12,10 +12,10 @@ typedef struct Nodo{
 Nodo *primeroP = NULL;
 Nodo *ultimoP = NULL;
 
-int p[];
-
-void agregarP(Nodo *nodo){
+void agregarP(int num){
+    Nodo *nodo = malloc(sizeof(Nodo));
     nodo -> siguiente = NULL;
+    mpz_inits(nodo -> dato, num);
     if(primeroP == NULL){
         primeroP = nodo;
         ultimoP = nodo;
@@ -26,12 +26,12 @@ void agregarP(Nodo *nodo){
 }
 
 
-void gen_num_primos(int num){
+void genPrimos(int num){
     mpz_t cantidad;
     mpz_t contador;
     mpz_inits(contador, 2);
     mpz_inits(cantidad, 10);
-    p[num];
+    
 
     while(cantidad != 0){
         
@@ -52,8 +52,14 @@ int main() {
     int cantPedir = 0;
     printf("\n Ingrese la cantidad de Numeros Perfectos a Imprimir. \n");
     scanf("%d", &cantPedir);
+    mpz_t temp;
+    mpz_inits(temp,0);
+    if(cantPedir >= 4){
+        
+        
+    }
 
-    gen_num_primos(cantPedir);
+    
 
     return 0;
 }
