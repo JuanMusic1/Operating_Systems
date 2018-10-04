@@ -32,19 +32,23 @@ void genPrimoscriba(int tam){
 
     addNodo(0);     //m[0] = 0;
     addNodo(0);     //m[1] = 0;
-    for(i = 2; i <= tam; ++i) 
+    for(i = 2; i <=  tam; ++i) 
         addNodo(1);
 
     Nodo *iter = primer;
-    for(i = 0; i*i <= tam; ++i) {
+    iter = iter -> sgt;
+    iter = iter -> sgt;
+    for(i = 2; i*i <= tam; ++i) {
         if(iter -> dato) {
             int k, l = 0;
-            for(h = 2; i * h <= tam; ++h)
-                for( k = 1; k <= h;k++){
+            for(h = 2; i * h <= tam; ++h){
+                for( k = 1; k <= h;++k){
                     l+=i;
                 }
+                
                 (iter + l) -> dato = 0;
                 l = 0;
+            }
         }
         iter = iter -> sgt;
     }
@@ -61,7 +65,7 @@ int main(){
     Nodo *inter = primer;
     while(inter != NULL){
         printf("%d\n", inter -> dato);
-        inter = inter -> sgt;
+        inter++;
     }
 
     
