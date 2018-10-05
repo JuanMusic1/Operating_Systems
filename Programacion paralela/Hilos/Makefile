@@ -1,4 +1,4 @@
-all: hilo
+all: hilo hilo2 hilo3
 
 hilo: 
 	gcc -o hilo hilos.c -lpthread

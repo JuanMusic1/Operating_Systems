@@ -97,7 +97,7 @@ int main(){
     //Aqui funciona todo
     if(proces1 == getpid()){
         printf("Proceso 1 con PID %i\n", getpid());
-        while(i <= size){
+        while(i <= size -1){
             if((numDescomp % arrprimos[i]) == 0){  
                 addfact(arrprimos[i]);  //aqui falta algo
                 numDescomp = numDescomp/arrprimos[i];         
@@ -124,7 +124,7 @@ int main(){
     } else if(proces3 == 0){
         printf("Proceso 3 con PID %i\n", getpid());
 
-        while(k <= size){
+        while(k <= size -1){
             if((numDescomp % arrprimos[k]) == 0){  
                 addfact(arrprimos[k]);  //x3
                 numDescomp = numDescomp/arrprimos[k];         

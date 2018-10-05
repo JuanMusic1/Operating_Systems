@@ -1,43 +1,61 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
 #include <unistd.h>
 #include <sys/types.h>
 
-#define clear() printf("\033[H\033[J")
+int numDescomp = 0;
+int size = 0;
+int sizef = 0;
+int sizet = 0;
 
-//para 1x1 le falta una comprobacion para cuando le de
-//comprueba si un numero es primo, devuelve 1 si lo es, en caso contrario devuelve 0
-int esPrimo(int n){
-    int i,a;
-    a = 0;
-    for(i = 1; i<= n; i++){
-        if(n%i == 0){
-            a++;
-        }
-    }
-    if(a == 2){
-        return 1;
-    } else {
-        return 0;
-    }      
+
+int *arrprimos;
+int *factores;
+int *temp;
+
+
+void addArrP(int numerito){
+    arrprimos = realloc(arrprimos, sizeof(int) * (size + 1));
+    arrprimos[size] = numerito;
+    size++;
 }
 
-//Genera numeros primos hasta ese numero en un arreglo para posterior uso
-void generarPrimos(int numDescompo, int *retor){
+void addfact(int numerito){
+    factores = realloc(factores, sizeof(int) * (sizef + 1));
+    factores[sizef] = numerito;
+    sizef++;
+}
 
-    int j = 0;
-    while(j < ((numDescompo/2)+1) ){
-        int i;
-        for(i = 2; i <= numDescompo; i++){
-            if(esPrimo(i)){
-                retor = realloc(retor, sizeof(int)*2);
-                retor[j] = i;
-                j++;
-            }
+void addtemp(int numerito){
+    temp = realloc(temp, sizeof(int) * (sizet + 1));
+    temp[sizet] = numerito;
+    sizet++;
+}
+
+
+void genPrimos(int tam){
+    int i, h;
+    temp = (int*) malloc(sizeof(int));
+
+    addtemp(0);//m[1] = 0;
+    addtemp(0); //m[2] = 0;
+    for(i = 2; i <= tam; ++i) 
+        addtemp(1);
+
+    for(i = 1; i*i <= tam +1; ++i) {
+        if(temp[i]) {
+            for(h = 2; i*h <= tam; ++h)
+                temp[i*h] = 0;
         }
-        j = numDescompo;
     }
+    //Aqui paso al arreglo de primos
+    for(i = 0; i <= tam +1; i++){
+        if(temp[i] == 1){
+            addArrP(i);
+        }
+    }
+    free(temp);
+
 }
 
 void printA(int *vecto, int indice){
@@ -48,35 +66,22 @@ void printA(int *vecto, int indice){
         i++;
     }
 }
-
-void cleanArr(int tam, int *vetor){
-    for(int i = 0; i < tam; i++){
-        vetor[i] = 0;
-    }
-        
-}
-
-
-
 int main(){
-    int numDescompo;
-    //Pide el numero a descomponer
-    printf("Ingrese el numero a descomponer\n");
-    scanf("%d", &numDescompo);
+    
+    //Cositas globales para generar
+    printf("Inserte Numero.\n");
+    scanf("%d", &numDescomp);
     printf("\n");
+    arrprimos = (int*) malloc(sizeof(int));
 
-    //Crea el arreglo con los primos hasta ese numero
-    int *arrprimos = malloc(sizeof(NULL)*1);
-    generarPrimos(numDescompo, arrprimos);
-    
+    genPrimos(numDescomp);
+
     //Arreglo que analizara y añadira sus factores primos 1 x 1
-    int factores[(numDescompo/2) + 1];
-    int i_factores = 0;
     
-    //cleanArr(((numDescompo/2)-1),factores);
-    //cleanArr((numDescompo/2)-1),arrprimos);
+    factores = (int*) malloc(sizeof(int));
+    int i_factores = 0;
 
-
+    //Preparo los procesos a separar
     int i = 0, j = 1, k = 2;
     printf("1\n");
     //crea los fork para sus 3 procesos
@@ -89,26 +94,26 @@ int main(){
     }
 
 
-    
+    //Aqui funciona todo
     if(proces1 == getpid()){
         printf("Proceso 1 con PID %i\n", getpid());
-        while(i <= ((numDescompo/2)+1)){
-            if((numDescompo % arrprimos[i]) == 0){  
-                factores[i_factores] = arrprimos[i];  //aqui falta algo
-                numDescompo = numDescompo/arrprimos[i];         
+        while(i <= size){
+            if((numDescomp % arrprimos[i]) == 0){  
+                addfact(arrprimos[i]);  //aqui falta algo
+                numDescomp = numDescomp/arrprimos[i];         
                 i_factores++;            
                 continue;
             }     
             i = i + 3;  
         }
-        
+        printA(factores, i_factores);
 
     } else if(proces2 == 0){
         printf("Proceso 2 con PID %i\n", getpid());
-        while(j <= ((numDescompo/2)+1)){
-            if((numDescompo % arrprimos[j]) == 0){  
-                factores[i_factores] = arrprimos[j];  // aqui falta algo
-                numDescompo = numDescompo/arrprimos[j];         
+        while(j <= size - 1){
+            if((numDescomp % arrprimos[j]) == 0){  
+                addfact(arrprimos[j]);  // aqui falta algo
+                numDescomp = numDescomp/arrprimos[j];         
                 i_factores++;            
                 continue;
             }     
@@ -119,11 +124,11 @@ int main(){
     } else if(proces3 == 0){
         printf("Proceso 3 con PID %i\n", getpid());
 
-        while(k <= (numDescompo/2)+1){
-            if((numDescompo % arrprimos[k]) == 0){  
-                factores[i_factores] = arrprimos[k];  //x3
-                numDescompo = numDescompo/arrprimos[k];         
-                i_factores++;            
+        while(k <= size){
+            if((numDescomp % arrprimos[k]) == 0){  
+                addfact(arrprimos[k]);  //x3
+                numDescomp = numDescomp/arrprimos[k];         
+                i_factores++;       
                 continue;
             }     
             k = k + 3;  
@@ -131,5 +136,9 @@ int main(){
         printA(factores, i_factores);
 
     }
+
+
+    free(factores);
+    free(arrprimos);
     return 0;
 }
