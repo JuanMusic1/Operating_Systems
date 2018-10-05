@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-
+//cambiarlo a memoria dinamica
 int main() {
     unsigned char m[2000000];
     int tam;
