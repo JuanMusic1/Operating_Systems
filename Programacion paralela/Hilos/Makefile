@@ -13,10 +13,10 @@ clean:
 	rm -f hilo hilo2 factPH
 
 debug:
-	gcc -g hilos.c
+	gcc -g hilos.c -lpthread
 
 debug2:
-	gcc -g hilos2.c
+	gcc -g hilos2.c -lpthread
 
 debug3:
-	gcc -g factoresPHilos.c
+	gcc -g factoresPHilos.c -lpthread

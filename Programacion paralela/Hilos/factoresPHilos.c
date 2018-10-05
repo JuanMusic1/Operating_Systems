@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <sys/types.h>
-#include<pthread.h>
+#include <pthread.h>
 
 pthread_t tid[3];
 
@@ -100,7 +100,7 @@ void * proceso2(void *arg){
 
     pthread_mutex_lock(&lock);
 
-    printf("Proceso 2");
+    printf("Proceso 2\n");
     while(j <= size - 1){
         if((numDescomp % arrprimos[j]) == 0){
             addfact(arrprimos[j]);  // aqui falta algo
@@ -120,7 +120,7 @@ void * proceso3(void *arg){
 
     pthread_mutex_lock(&lock);
     
-    printf("Proceso 3");
+    printf("Proceso 3\n");
     while(k <= size){
         if((numDescomp % arrprimos[k]) == 0){
             addfact(arrprimos[k]);  //x3
@@ -153,33 +153,33 @@ int main(){
         printf("\n mutex init failed\n");
         return 1;
     }
-    i = 0;
-    while(i < 2){
-        if(i == 1){
-            err = pthread_create(&(tid[i]), NULL, &proceso1, NULL);
-            if (err != 0){
-                printf("\ncan't create thread :[%s]", strerror(err));
-            }
-        } else if(i == 2) { 
-            err = pthread_create(&(tid[i]), NULL, &proceso2, NULL);
+    int conti = 0;
+    while(conti < 3){
+        if(conti == 0){
+            err = pthread_create(&(tid[conti]), NULL, &proceso1, NULL);
             if (err != 0){
                 printf("\ncan't create thread :[%d]", strerror(err));
             }
-        } else {
-            err = pthread_create(&(tid[i]), NULL, &proceso2, NULL);
+        } else if(conti == 1) { 
+            err = pthread_create(&(tid[conti]), NULL, &proceso2, NULL);
+            if (err != 0){
+                printf("\ncan't create thread :[%d]", strerror(err));
+            }
+        } else if(conti == 2) {
+            err = pthread_create(&(tid[conti]), NULL, &proceso3, NULL);
             if (err != 0){
                 printf("\ncan't create thread :[%d]", strerror(err));
             }
 
         }
-        i++;
+        conti++;
     }
 
     printf("1\n");
     //Aqui funciona todo
     pthread_join(tid[0], NULL);
-    pthread_join(tid[1], NULL);
-    pthread_join(tid[2], NULL);
+    //pthread_join(tid[1], NULL);
+    //pthread_join(tid[2], NULL);
 
     pthread_mutex_destroy(&lock);
 
