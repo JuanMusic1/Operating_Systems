@@ -9,7 +9,6 @@ int counter;
 pthread_mutex_t lock;
 
 void* doSomeThing(void *arg){
-
     pthread_mutex_lock(&lock);
 
     unsigned long i = 0;
@@ -26,7 +25,6 @@ void* doSomeThing(void *arg){
 }
 
 int main(void){
-
     int i = 0;
     int err;
 
