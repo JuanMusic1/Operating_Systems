@@ -7,4 +7,4 @@ clean:
 	rm perfect
 
 debug:
-	gcc -g perfectos.c
+	gcc -g perfectos1.c -lgmp -lm
