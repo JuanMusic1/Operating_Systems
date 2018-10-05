@@ -1,10 +1,10 @@
 all: perfectos
 
 perfectos: 
-	gcc -o perfect perfectos.c -lgmp
+	gcc -o perfect perfectos1.c -lgmp -lm
 	
 clean:
 	rm perfect
 
 debug:
-	cc -g perfectos.c
+	gcc -g perfectos.c
