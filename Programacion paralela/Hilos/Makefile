@@ -7,7 +7,10 @@ hilo2:
 	gcc -o hilo2 hilos2.c -lpthread
 
 hilo3: 
-	gcc -o factPH factoresPHilos.c -lpthread
+	gcc -o factPH factoresPHilos.c -lpthread 
+
+hilo3g: 
+	gcc -o factPHG factoresPHG.c -lpthread -lm -lgmp
 	
 clean:
 	rm -f hilo hilo2 factPH
@@ -20,3 +23,6 @@ debug2:
 
 debug3:
 	gcc -g factoresPHilos.c -lpthread
+
+debug4:
+	gcc -g factoresPHG.c -lpthread -lgmp -lm
