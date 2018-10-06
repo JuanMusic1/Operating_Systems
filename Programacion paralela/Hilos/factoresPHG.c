@@ -6,20 +6,28 @@
 #include <gmp.h>
 
 pthread_t hilo1, hilo2, hilo3;
-
 pthread_mutex_t lock;
 
+typedef struct {
+    mpz_t dato;
+    Primos *sig;
+}Primos;
 
-int numDescomp = 0;
-int size = 0;
-int sizef = 0;
-int sizet = 0;
-int i_factores = 0;
-int i = 0, j = 1, k = 2;
+void addPrimos(mpz_t){
+    
+}
+//cursoforense
+mpz_t numDescomp;
+mpz_init(numDescomp);
+mpz_t size = 0;
+mpz_t sizef = 0;
+mpz_t sizet = 0;
+mpz_t i_factores = 0;
+mpz_t i = 0, j = 1, k = 2;
 
-int *arrprimos;
-int *factores;
-int *temp;
+mpz_t *arrprimos;
+mpz_t *factores;
+mpz_t *temp;
 
 
 void addArrP(int numerito){
@@ -142,12 +150,12 @@ int main(){
     printf("Inserte Numero.\n");
     scanf("%d", &numDescomp);
     printf("\n");
-    arrprimos = (int*) malloc(sizeof(int));
+    arrprimos = (mpz_t*) malloc(sizeof(mpz_t));
 
     genPrimos(numDescomp);
 
     //Arreglo que analizara y añadira sus factores primos 1 x 1
-    factores = (int*) malloc(sizeof(int));
+    factores = (mpz_t*) malloc(sizeof(mpz_t));
 
     printf("1\n");
     //Preparo los hilos para ejecutar el programa
