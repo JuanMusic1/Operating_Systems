@@ -2,12 +2,10 @@
 #include <stdlib.h>
 #include <pthread.h>
 
+pthread_t arrpollitos[6];
+pthread_mutex_t  arrtenedores[6]; //PTHREAD_MUTEX_INITIALIZER;
 
-pthread_mutex_t count_mutex     = PTHREAD_MUTEX_INITIALIZER;
 
-pthread_cond_t  condition_var   = PTHREAD_COND_INITIALIZER;
-
-pthread_t tid[2];
 int counter;
 pthread_mutex_t lock;
 
@@ -16,7 +14,7 @@ void *functionCount2();
 
 int  count = 0;
 
-#define COUNT_DONE  10
+#define COMIDA_DISPONIBLE  1000
 #define COUNT_HALT1  3
 #define COUNT_HALT2  6
 
@@ -44,15 +42,16 @@ int  count = 0;
 
     while(i < 2)
     {
-        err = pthread_create(&(tid[i]), NULL, &doSomeThing, NULL);
+        //err = pthread_create(&(tid[i]), NULL, &doSomeThing, NULL);
         if (err != 0)
             printf("\ncan't create thread :[%s]", strerror(err));
         i++;
     }
 
-    pthread_join(tid[0], NULL);
-    pthread_join(tid[1], NULL);
-    pthread_mutex_destroy(&lock);
+    //pthread_join(tid[0], NULL);
+    
+    //pthread_join(tid[1], NULL);
+    //pthread_mutex_destroy(&lock);
 
     return 0;
 
