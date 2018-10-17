@@ -2,27 +2,27 @@
 #include <stdlib.h>
 #include <pthread.h>
 
-pthread_t arrpollitos[6];
-pthread_mutex_t  arrtenedores[6]; //PTHREAD_MUTEX_INITIALIZER;
+pthread_t pollito1, pollito2, pollito3, pollito4, pollito5, pollito6;
+
+
 
 
 int counter;
 pthread_mutex_t lock;
 
-void *functionCount1();
-void *functionCount2();
+void * comer();
+
 
 int  count = 0;
 
 #define COMIDA_DISPONIBLE  1000
-#define COUNT_HALT1  3
-#define COUNT_HALT2  6
+
 
 	 
  int main(){
     pthread_t thread1, thread2;
-    pthread_create( &thread1, NULL, &functionCount1, NULL);
-    pthread_create( &thread2, NULL, &functionCount2, NULL);
+    //pthread_create( &thread1, NULL, &functionCount1, NULL);
+    //pthread_create( &thread2, NULL, &functionCount2, NULL);
     pthread_join( thread1, NULL);
     pthread_join( thread2, NULL);
     printf("Final count: %d\n",count);

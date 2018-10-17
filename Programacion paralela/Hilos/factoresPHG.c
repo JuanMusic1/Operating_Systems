@@ -8,21 +8,33 @@
 pthread_t hilo1, hilo2, hilo3;
 pthread_mutex_t lock;
 
+//Lista de primos
 typedef struct {
     mpz_t dato;
     Primos *sig;
 }Primos;
 
-void addPrimos(mpz_t){
+//Lista temporal
+typedef struct {
+    mpz_t dato;
+    TMP *sig;
+}TMP;
+
+
+void addPrimos(mpz_t num){
     
 }
 //cursoforense
 mpz_t numDescomp;
 mpz_init(numDescomp);
-mpz_t size = 0;
-mpz_t sizef = 0;
-mpz_t sizet = 0;
+mpz_t size;
+mpz_init(size);
+mpz_t sizef;
+mpz_init(sizef);
+mpz_t sizet;
+mpz_init(sizet);
 mpz_t i_factores = 0;
+mpz_init(i_factores);
 mpz_t i = 0, j = 1, k = 2;
 
 mpz_t *arrprimos;
