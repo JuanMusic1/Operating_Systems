@@ -79,7 +79,7 @@ void * proceso1(void *arg){
     pthread_mutex_lock(&lock);
 
     //printf("Proceso 1\n");
-    while(i <= size){
+    while(i < size){
         if((numDescomp % arrprimos[i]) == 0){
             addfact(arrprimos[i]);  //aqui falta algo
             numDescomp = numDescomp/arrprimos[i];         
@@ -101,7 +101,7 @@ void * proceso2(void *arg){
     pthread_mutex_lock(&lock);
 
     //printf("Proceso 2\n");
-    while(j <= size - 1){
+    while(j < size - 1){
         if((numDescomp % arrprimos[j]) == 0){
             addfact(arrprimos[j]);  // aqui falta algo
             numDescomp = numDescomp/arrprimos[j];         
@@ -121,7 +121,7 @@ void * proceso3(void *arg){
     pthread_mutex_lock(&lock);
     
     //printf("Proceso 3\n");
-    while(k <= size){
+    while(k < size){
         if((numDescomp % arrprimos[k]) == 0){
             addfact(arrprimos[k]);  //x3
             numDescomp = numDescomp/arrprimos[k];         
