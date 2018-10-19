@@ -3,11 +3,11 @@
 #include <pthread.h>
 #include <stdbool.h>
 
-int esta = 600;
+//int esta = 1000;
 
 pthread_t pollito1, pollito2, pollito3, pollito4, pollito5, pollito6;
 
-pthread_mutex_t cuch1, cuch2, cuch3, cuch4, cuch5, cuch6, tazon;
+pthread_mutex_t cuch1, cuch2, cuch3, cuch4, cuch5, cuch6; //tazon;
 
 void * comer(int);
 
@@ -37,10 +37,10 @@ void * comer(int);
         printf("\n mutex 6 init failed\n");
         return 1;
     }
-    if(pthread_mutex_init(&tazon, NULL)!= 0){
+    /*if(pthread_mutex_init(&tazon, NULL)!= 0){
         printf("\n mutex tazon init failed\n");
         return 1;
-    }
+    }*/
 
     int err;
     if ((err = pthread_create( &pollito1, NULL, &comer, (void *)1)) != 0){
@@ -81,7 +81,7 @@ void * comer(int);
     pthread_mutex_destroy(&cuch4);
     pthread_mutex_destroy(&cuch5);
     pthread_mutex_destroy(&cuch6);
-    pthread_mutex_destroy(&tazon);
+    //pthread_mutex_destroy(&tazon);
     //exit(EXIT_SUCCESS);
     return 0;
 
@@ -132,13 +132,13 @@ void * comer(int i){
         }
     
         if(izq == true && der == true){
-            pthread_mutex_lock(&tazon);
+            //pthread_mutex_lock(&tazon);
             come++;
-            esta--;
-            pthread_mutex_unlock(&tazon);
+            //esta--;
+            //pthread_mutex_unlock(&tazon);
             if(i == 1){
                 printf("\nGolosa 1 come esta\n");
-                printf("Esta tiene %d\n", esta);
+                //printf("Esta tiene %d\n", esta);
                 printf("Golosa 1 tiene: %d\n", come);
                 izq = false;
                 der = false;
@@ -146,7 +146,7 @@ void * comer(int i){
                 pthread_mutex_unlock(&cuch1);
             }else if(i == 2){
                 printf("\nGolosa 2 come esta\n");
-                printf("Esta tiene %d\n", esta);
+                //printf("Esta tiene %d\n", esta);
                 printf("Golosa 2 tiene: %d\n", come);
                 izq = false;
                 der = false;
@@ -154,7 +154,7 @@ void * comer(int i){
                 pthread_mutex_unlock(&cuch2);
             } else if(i == 3){
                 printf("\nGolosa 3 come esta\n");
-                printf("Esta tiene %d\n", esta);
+                //printf("Esta tiene %d\n", esta);
                 printf("Golosa 3 tiene: %d\n", come);
                 izq = false;
                 der = false;
@@ -162,7 +162,7 @@ void * comer(int i){
                 pthread_mutex_unlock(&cuch3);
             } else if(i == 4){
                 printf("\nGolosa 4 come esta\n");
-                printf("Esta tiene %d\n", esta);
+                //printf("Esta tiene %d\n", esta);
                 printf("Golosa 4 tiene: %d\n", come);
                 izq = false;
                 der = false;
@@ -170,7 +170,7 @@ void * comer(int i){
                 pthread_mutex_unlock(&cuch3);
             } else if(i == 5){
                 printf("\nGolosa 5 come esta\n");
-                printf("Esta tiene %d\n", esta);
+                //printf("Esta tiene %d\n", esta);
                 printf("Golosa 5 tiene: %d\n", come);
                 izq = false;
                 der = false;
@@ -178,7 +178,7 @@ void * comer(int i){
                 pthread_mutex_unlock(&cuch4);
             }else if(i == 6){
                 printf("\nGolosa 6 come esta\n");
-                printf("Esta tiene %d\n", esta);
+                //printf("Esta tiene %d\n", esta);
                 printf("Golosa 6 tiene: %d\n", come);
                 izq = false;
                 der = false;

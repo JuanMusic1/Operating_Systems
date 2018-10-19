@@ -10,7 +10,7 @@ clean:
 	rm -rf pollis pollis2
 
 debug:
-	gcc -g pollito.c -lpthread
+	gcc -g pollitos.c -lpthread
 
 debug2:
-	gcc -g pollito1.c -lpthread
+	gcc -g pollitos2.c -lpthread
