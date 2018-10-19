@@ -3,8 +3,14 @@ all: polla
 polla:
 	gcc -o pollis pollitos.c -lpthread
 
+polla2:
+	gcc -o pollis2 pollitos2.c -lpthread
+
 clean:
-	rm -rf pollis
+	rm -rf pollis pollis2
 
 debug:
-	gcc -g polito.c -lpthread
+	gcc -g pollito.c -lpthread
+
+debug2:
+	gcc -g pollito1.c -lpthread

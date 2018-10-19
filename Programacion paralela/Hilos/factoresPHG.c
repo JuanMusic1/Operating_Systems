@@ -23,24 +23,11 @@ typedef struct {
 
 //cursoforense
 mpz_t numDescomp;
-mpz_init(numDescomp);
 mpz_t size;
-mpz_init(size);
 mpz_t sizef;
-mpz_init(sizef);
 mpz_t sizet;
-mpz_init(sizet);
 mpz_t i_factores;
-mpz_init(i_factores);
 mpz_t i, j, k;
-
-mpz_init(i);
-mpz_init(j);
-mpz_set_str(j, '1', 10);
-mpz_init(k);
-mpz_set_str(k, '2', 10);
-
-
 
 mpz_t *arrprimos;
 mpz_t *factores;
@@ -161,7 +148,20 @@ void * proceso3(void *arg){
     pthread_mutex_unlock(&lock);
 }
 int main(){
-    
+    //inicializo maricadas
+    mpz_init(numDescomp);
+    mpz_init(size);
+    mpz_init(sizef);
+    mpz_init(sizet);
+    mpz_init(i_factores);
+    mpz_init(i);
+    mpz_init(j);
+    mpz_init(k);
+    mpz_set_str(j, "1", 10);
+    mpz_set_str(k, "2", 10);
+
+
+
     int err;
     //Cositas globales para generar
     printf("Inserte Numero.\n");
