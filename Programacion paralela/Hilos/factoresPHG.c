@@ -11,7 +11,7 @@ pthread_mutex_t lock;
 //Lista de primos
 typedef struct{
     mpz_t dato;
-    struct Primos *sig;
+    struct PRMS *sig;
 }Primos;
 
 //Lista temporal
@@ -20,6 +20,11 @@ typedef struct {
     struct TMP *sig;
 }TMP;
 
+//Lista factores
+typedef struct {
+    mpz_t dato;
+    struct FACTO *sig;
+}FACTO;
 
 //cursoforense
 mpz_t numDescomp;
