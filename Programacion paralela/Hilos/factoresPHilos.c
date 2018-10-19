@@ -101,7 +101,7 @@ void * proceso2(void *arg){
     pthread_mutex_lock(&lock);
 
     //printf("Proceso 2\n");
-    while(j < size - 1){
+    while(j < size){
         if((numDescomp % arrprimos[j]) == 0){
             addfact(arrprimos[j]);  // aqui falta algo
             numDescomp = numDescomp/arrprimos[j];         
