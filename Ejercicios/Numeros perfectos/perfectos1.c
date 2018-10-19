@@ -3,6 +3,7 @@
 #include <stdbool.h>
 #include <math.h>
 #include <gmp.h>
+#include <time.h>
 
 typedef struct{
   mpz_t dato;
@@ -27,6 +28,11 @@ int *primos(int);
 bool verificar(int);
 
 int main(){
+
+  printf("Inicio de la ejecucion del programa.\n");
+  clock_t begin=clock();
+  printf("Medida de inicio de ejecucion tomada.\n");
+
   int n;
   printf("Cuantos perfectos desea calcular? ");
   scanf("%d", &n);
@@ -58,6 +64,11 @@ int main(){
     printf ("\n \n");
     i = i->sgt;
   }
+
+  clock_t end=clock();
+  double time_spent=(double)(end-begin)/CLOCKS_PER_SEC;
+  printf("El tiempo de ejecucion fue %f\n",time_spent);
+  return 0;
 }
 
 bool verificar(int p){

@@ -3,6 +3,7 @@
 #include <unistd.h>
 #include <sys/types.h>
 #include <pthread.h>
+#include <time.h>
 
 pthread_t hilo1, hilo2, hilo3;
 

@@ -1,7 +1,12 @@
 #include <stdio.h>
+#include <time.h>
 
 //cambiarlo a memoria dinamica
 int main() {
+    printf("Inicio de la ejecucion del programa.\n");
+    clock_t begin=clock();
+    printf("Medida de inicio de ejecucion tomada.\n");
+
     unsigned char m[2000000];
     int tam;
     int i, h;
@@ -31,5 +36,9 @@ int main() {
     }
     printf("\n");
 
+    clock_t end=clock();
+    double time_spent=(double)(end-begin)/CLOCKS_PER_SEC;
+    printf("El tiempo de ejecucion fue %f\n",time_spent);
+    return 0;
 
 }
