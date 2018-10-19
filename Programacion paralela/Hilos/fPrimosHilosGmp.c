@@ -321,8 +321,5 @@ int main(int argc, char const *argv[]){
     printf("El tiempo de ejecucion fue %f\n",time_spent);
  
     exit(EXIT_SUCCESS);
-
-
-	
 	
 }
