@@ -11,6 +11,9 @@ hilo3:
 
 hilo3g: 
 	gcc -o factPHG factoresPHG.c -lpthread -lm -lgmp
+
+hilo4: 
+	gcc -o factPHG fPrimosHilosGmp.c -lpthread -lm -lgmp
 	
 clean:
 	rm -f hilo hilo2 factPH
