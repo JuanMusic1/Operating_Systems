@@ -135,9 +135,9 @@ void funcion1(){
 		mpz_mod(mod,input,n1->n);
 		//printf("--------1\n");
 		if(mpz_cmp_ui(mod,0)==0){
-			printf("entra ");
-			mpz_out_str(stdout,10,n1->n);
-			printf("\n");
+			//printf("entra ");
+			//mpz_out_str(stdout,10,n1->n);
+			//printf("\n");
 			agregarFactor(n1->n);
 			mpz_mul(res,res,n1->n);
 			mpz_t aux;
@@ -146,9 +146,9 @@ void funcion1(){
 			mpz_mod(mod,aux,n1->n);
 			//printf("-------2\n");
 			while(mpz_cmp_ui(mod,0)==0){
-				printf("entra ");
-				mpz_out_str(stdout,10,n1->n);
-				printf("\n");
+				//printf("entra ");
+				//mpz_out_str(stdout,10,n1->n);
+				//printf("\n");
 				agregarFactor(n1->n);
 				mpz_cdiv_q(aux,aux,n1->n);
 				mpz_mul(res,res,n1->n);
@@ -184,9 +184,9 @@ void funcion2(){
 		mpz_mod(mod,input,n1->n);
 		//printf("--------1\n");
 		if(mpz_cmp_ui(mod,0)==0){
-			printf("entra ");
-			mpz_out_str(stdout,10,n1->n);
-			printf("\n");
+			//printf("entra ");
+			//mpz_out_str(stdout,10,n1->n);
+			//printf("\n");
 			agregarFactor(n1->n);
 			mpz_mul(res,res,n1->n);
 			mpz_t aux;
@@ -195,9 +195,9 @@ void funcion2(){
 			mpz_mod(mod,aux,n1->n);
 			//printf("-------2\n");
 			while(mpz_cmp_ui(mod,0)==0){
-				printf("entra ");
-				mpz_out_str(stdout,10,n1->n);
-				printf("\n");
+				//printf("entra ");
+				//mpz_out_str(stdout,10,n1->n);
+				//printf("\n");
 				agregarFactor(n1->n);
 				mpz_cdiv_q(aux,aux,n1->n);
 				mpz_mul(res,res,n1->n);
@@ -233,9 +233,9 @@ void funcion3(){
 		mpz_mod(mod,input,n1->n);
 		//printf("--------1\n");
 		if(mpz_cmp_ui(mod,0)==0){
-			printf("entra ");
-			mpz_out_str(stdout,10,n1->n);
-			printf("\n");
+			//printf("entra ");
+			//mpz_out_str(stdout,10,n1->n);
+			//printf("\n");
 			agregarFactor(n1->n);
 			mpz_mul(res,res,n1->n);
 			mpz_t aux;
@@ -244,9 +244,9 @@ void funcion3(){
 			mpz_mod(mod,aux,n1->n);
 			//printf("-------2\n");
 			while(mpz_cmp_ui(mod,0)==0){
-				printf("entra ");
-				mpz_out_str(stdout,10,n1->n);
-				printf("\n");
+				//printf("entra ");
+				//mpz_out_str(stdout,10,n1->n);
+				//printf("\n");
 				agregarFactor(n1->n);
 				mpz_cdiv_q(aux,aux,n1->n);
 				mpz_mul(res,res,n1->n);
@@ -276,9 +276,9 @@ void funcion3(){
 
 int main(int argc, char const *argv[]){
 
-	printf("Inicio de la ejecucion del programa.\n");
-    clock_t begin=clock();
-    printf("Medida de inicio de ejecucion tomada.\n");
+	//printf("Inicio de la ejecucion del programa.\n");
+    //clock_t begin=clock();
+    //printf("Medida de inicio de ejecucion tomada.\n");
 
 	mpz_init(input);
 	mpz_set_str(input,argv[1],10);
@@ -316,9 +316,9 @@ int main(int argc, char const *argv[]){
 
  	//imprimirPrimos();
 
- 	clock_t end=clock();
-    double time_spent=(double)(end-begin)/CLOCKS_PER_SEC;
-    printf("El tiempo de ejecucion fue %f\n",time_spent);
+ 	//clock_t end=clock();
+    //double time_spent=(double)(end-begin)/CLOCKS_PER_SEC;
+    //printf("El tiempo de ejecucion fue %f\n",time_spent);
  
     exit(EXIT_SUCCESS);
 	
