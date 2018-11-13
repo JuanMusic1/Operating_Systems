@@ -1,10 +1,10 @@
 all: image
 
 image: 
-	gcc -o image imageM.c -lgmp -lm
+	gcc -o image imagenM.c -lgmp -lm
 	
 clean:
 	rm image
 
 debug:
-	gcc -g imageM.c -lgmp -lm
+	gcc -g imagenM.c -lgmp -lm
