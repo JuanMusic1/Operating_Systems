@@ -92,8 +92,6 @@ void crearArchivo(char img[], char sys[]){
 	
 }
 
-
-
 void borrarArchivo(char fileN[], char sys[]){ 	
 	strcpy(sys, "rm "); 	
 	strcat(sys, fileN); 
@@ -158,7 +156,6 @@ int main(int argc, char const *argv[]){
 	while(i){
 		printf("Seleccione la accion a realizar\n");
 		printf("A)Crear archivo B)Borrar archivo C)Salir\n");
-
 		des = readinput();
 		switch(*des){
 			case 'A' :
