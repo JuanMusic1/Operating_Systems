@@ -12,7 +12,7 @@ int main(){
 	FILE *archivo;
     char caracter;
     
-	archivo = fopen ("bible.txt", "r+");
+	archivo = fopen ("prueba.txt", "r+");
 	if(archivo == NULL){
 		fputs("No existe el archivo\n", stderr);
 		exit(1);

@@ -51,7 +51,7 @@ void montarImg(char imgN[], char sys[]){
 	strcat(sys, " datos"); 
 }
 
-void desmontarImg(char imgN[], char sys[]){
+void desmontarImg(char sys[]){
 	chdir("/home/juanmusic1/Operating_Systems/ImageManagement"); 	
 	strcpy(sys, "umount datos/"); 
 }
@@ -116,7 +116,7 @@ int main(int argc, char const *argv[]){
 
 
 	//-----Pido nombre imagen-----
-	printf("Ingrese el nombre de la imagen con extencion prro :v\n");
+	printf("Ingrese el nombre de la imagen con extension prro :v\n");
 	scanf("%s", &imgName);
 	printf("\n");
 	
@@ -152,10 +152,12 @@ int main(int argc, char const *argv[]){
 	system(sys2);
 
 	char *des;
-	int i = 1;
+	int i = 1, x = 0;
 	while(i){
 		printf("Seleccione la accion a realizar\n");
-		printf("A)Crear archivo B)Borrar archivo C)Salir\n");
+		printf("A)Crear archivo\n");
+		printf("B)Borrar archivo\n");
+		printf("C)Salir\n");
 		des = readinput();
 		switch(*des){
 			case 'A' :
@@ -163,7 +165,7 @@ int main(int argc, char const *argv[]){
 				crearArchivo(imgName,&sys2);
 				//printf("%s", &sys2); 	
 				system(sys2);
-				printf("Archivo creado\n");
+				printf("----------Archivo creado----------\n");
 				break;
 			case 'B' :
 				//Borrar archivo de la imagen 	
@@ -175,7 +177,7 @@ int main(int argc, char const *argv[]){
 				borrarArchivo(fileN, &sys2); 	
 				system(sys2); 	
 				system("ls");
-				printf("Archivo borrado\n");
+				printf("----------Archivo borrado----------\n");
 				break;
 			case 'C' :
 				i = 0;
@@ -183,16 +185,17 @@ int main(int argc, char const *argv[]){
 		}
 	}
 	//-------Desmontar la imagen -------	
-	desmontarImg(imgName, &sys2);
+	desmontarImg(&sys2);
 	//printf("%s", &sys2); 	
 	system(sys2);
+	printf("---Imagen desmontada---");
 
 	
 	//-----Fls de la imagen----- 	
 	flsImg(imgName, &sys2); 
 	//printf("%s", &sys2); 	
 	system(sys2);
-
+	printf("\n");
 
 	return 0;
 }
