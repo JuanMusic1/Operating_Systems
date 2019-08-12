@@ -7,4 +7,4 @@ clean:
 	rm elim
 
 debug:
-	cc -g elim.c
+	cc -g eliminar.c

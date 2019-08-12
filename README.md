@@ -10,7 +10,6 @@ Instala las dependencias para usar.
 
 ```sh
 $ sudo apt-get install lpthread libgmp3 
-$ sudo service apache2 restart
 ```
 El repositourio usa archivos Makefile para hacer mas facil la compilacion
 
